@@ -21,28 +21,55 @@ def simple_bubble(unsorted):
             if unsorted[i] > unsorted[i+1]:
                 is_sorted = False
                 unsorted[i], unsorted[i+1] = unsorted[i+1], unsorted[i]
-    return print(unsorted)
+    return unsorted
                     
 
 
 
-def students_list(self, scores, student_ids):
+def students_list( scores, student_ids):
 
     """Thought process 
-    we have a list of students scores
-    We have a list of student ids which sort of like group the scores
-    for each score, we look at the group it falls into(the student id, ) if the group is the same, we go ahead and sort 
+    We map student ids against  their corresponding scores
+    We come up with a dictionary where each id has a list of scores
+    we iterate the dictionary items and sort the values indipendently
+    we later join the sorted lists returned by the bubble sort
 
 
     """
-    pass
-    # current_id = 0
-    # for id in student_ids:
-    #     while current_id == id:
-    #          i = 0
-    #          for score in scores:
-    #              if score[i]> score[i+1]:
-                         
 
-unsorted =  [1,3,7,4,8,10,2,2,1]
-simple_bubble(unsorted=unsorted)
+    list_dict = {}
+    for student_id, score in zip(student_ids, scores):
+        if student_id in list_dict:
+            list_dict[student_id].append(score)
+        else:
+            list_dict[student_id] = [score]
+ 
+
+    sorted_list = []
+    for key, value in list_dict.items():
+        sorted_list.extend(simple_bubble(value))
+
+    
+    
+    return print(sorted_list)
+
+
+
+
+
+    
+        
+        
+   
+    
+    
+
+                     
+                
+### TESTING 
+
+# unsorted =  [1,3,7,4,8,10,2,2,1]
+# simple_bubble(unsorted=unsorted)
+scores = [50, 40, 60, 30, 70, 20]
+student_ids = [1, 1, 1, 2, 2, 2]
+students_list(scores=scores, student_ids=student_ids)
