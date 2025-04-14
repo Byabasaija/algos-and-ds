@@ -53,18 +53,7 @@ def students_list( scores, student_ids):
     
     return print(sorted_list)
 
-
-
-
-
-    
-        
-        
-   
-    
-    
-
-                     
+            
                 
 ### TESTING 
 
