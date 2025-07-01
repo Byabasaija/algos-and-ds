@@ -45,6 +45,15 @@ class MyList:
         self.data[index] = value
         self.size += 1
         
+    def pop(self, index):
+        if index < 0 or index >= self.size:
+            raise IndexError("Index out of bounds")
+        value = self.data[index]
+        for i in range(index, self.size - 1):
+            self.data[i] = self.data[i + 1]
+        self.data[self.size - 1] = None
+        self.size -= 1
+        return value
 
            
         
